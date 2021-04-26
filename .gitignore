@@ -268,7 +268,6 @@ dmypy.json
 .pytype/
 cython_debug/
 debug/
-Cargo.lock
 **/*.rs.bk
 *.patch
 *.diff
