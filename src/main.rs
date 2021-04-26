@@ -1,14 +1,14 @@
 use rand::prelude::*;
-use colored::Colorize;
+use colored::{Colorize, ColoredString};
 
 mod insertion_sort;
 mod selection_sort;
 
-fn get_result_text(success: bool) -> &'static str {
+fn get_result_text(success: bool) -> ColoredString {
     if success {
-        "PASSED"
+        "PASSED".green()
     } else {
-        "FAILED"
+        "FAILED".red()
     }
 }
 
@@ -35,6 +35,6 @@ fn main() {
     // selection sort
     let mut unsorted = test_array.clone();
     let selection_sort_result = selection_sort::selection_sort(&mut unsorted);
-    println!("selection sort {}", get_result_text(selection_sort_result == sorted_test_array).green());
+    println!("selection sort {}", get_result_text(selection_sort_result == sorted_test_array));
     assert_eq!(selection_sort_result, sorted_test_array);
 }

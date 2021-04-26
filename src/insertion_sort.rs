@@ -3,7 +3,7 @@
 // Average O(n^2)
 // Space O(1)
 
-pub fn insertion_sort(arr: &mut [i32]) -> &[i32] {
+pub fn insertion_sort<T: Ord>(arr: &mut [T]) -> &[T] {
     for i in 1..arr.len() {
         let mut j = i;
         while j > 0 && arr[j - 1] > arr[j] {
