@@ -3,6 +3,7 @@ use colored::{Colorize, ColoredString};
 
 mod insertion_sort;
 mod selection_sort;
+mod bubble_sort;
 
 fn get_result_text(success: bool) -> ColoredString {
     if success {
@@ -37,4 +38,10 @@ fn main() {
     let selection_sort_result = selection_sort::selection_sort(&mut unsorted);
     println!("selection sort {}", get_result_text(selection_sort_result == sorted_test_array));
     assert_eq!(selection_sort_result, sorted_test_array);
+
+    // bubble sort
+    let mut unsorted = test_array.clone();
+    let bubble_sort_result = bubble_sort::bubble_sort(&mut unsorted);
+    println!("bubble sort {}", get_result_text(bubble_sort_result == sorted_test_array));
+    assert_eq!(bubble_sort_result, sorted_test_array);
 }
