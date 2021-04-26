@@ -4,6 +4,7 @@ use colored::{Colorize, ColoredString};
 mod insertion_sort;
 mod selection_sort;
 mod bubble_sort;
+mod shell_sort;
 
 fn get_result_text(success: bool) -> ColoredString {
     if success {
@@ -44,4 +45,10 @@ fn main() {
     let bubble_sort_result = bubble_sort::bubble_sort(&mut unsorted);
     println!("bubble sort {}", get_result_text(bubble_sort_result == sorted_test_array));
     assert_eq!(bubble_sort_result, sorted_test_array);
+
+    // shell sort
+    let mut unsorted = test_array.clone();
+    let shell_sort_result = shell_sort::shell_sort(&mut unsorted);
+    println!("shell sort {}", get_result_text(shell_sort_result == sorted_test_array));
+    assert_eq!(shell_sort_result, sorted_test_array);
 }
