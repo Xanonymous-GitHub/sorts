@@ -8,6 +8,7 @@ mod bubble_sort;
 mod shell_sort;
 mod heap_sort;
 mod merge_sort;
+mod quick_sort;
 
 const DATA_LEN: usize = 50000;
 
@@ -80,4 +81,12 @@ fn main() {
     let duration = start.elapsed();
     println!("merge sort     {} {:?}", get_result_text(merge_sort_result == sorted_test_array), duration);
     assert_eq!(merge_sort_result, sorted_test_array);
+
+    // quick sort
+    let mut unsorted = test_array.clone();
+    let start = Instant::now();
+    let quick_sort_result = quick_sort::quick_sort(&mut unsorted);
+    let duration = start.elapsed();
+    println!("quick sort     {} {:?}", get_result_text(quick_sort_result == sorted_test_array), duration);
+    assert_eq!(quick_sort_result, sorted_test_array);
 }
