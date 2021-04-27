@@ -7,6 +7,7 @@ mod selection_sort;
 mod bubble_sort;
 mod shell_sort;
 mod heap_sort;
+mod merge_sort;
 
 const DATA_LEN: usize = 50000;
 
@@ -71,4 +72,12 @@ fn main() {
     let duration = start.elapsed();
     println!("heap sort      {} {:?}", get_result_text(heap_sort_result == sorted_test_array), duration);
     assert_eq!(heap_sort_result, sorted_test_array);
+
+    // merge sort
+    let mut unsorted = test_array.clone();
+    let start = Instant::now();
+    let merge_sort_result = merge_sort::merge_sort(&mut unsorted);
+    let duration = start.elapsed();
+    println!("merge sort     {} {:?}", get_result_text(merge_sort_result == sorted_test_array), duration);
+    assert_eq!(merge_sort_result, sorted_test_array);
 }
