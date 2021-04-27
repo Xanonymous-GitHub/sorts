@@ -7,6 +7,8 @@ mod bubble_sort;
 mod shell_sort;
 mod heap_sort;
 
+const DATA_LEN: usize = 50000;
+
 fn get_result_text(success: bool) -> ColoredString {
     if success {
         "PASSED".green()
@@ -25,7 +27,7 @@ fn get_rand_arr<const SIZE: usize>(rng: &mut ThreadRng) -> [i32; SIZE] {
 
 fn main() {
     let mut rng = rand::thread_rng();
-    let test_array: [i32; 50000] = get_rand_arr(&mut rng);
+    let test_array: [i32; DATA_LEN] = get_rand_arr(&mut rng);
     let mut sorted_test_array = test_array.clone();
     sorted_test_array.sort();
 
