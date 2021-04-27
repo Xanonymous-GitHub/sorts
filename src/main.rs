@@ -5,6 +5,7 @@ mod insertion_sort;
 mod selection_sort;
 mod bubble_sort;
 mod shell_sort;
+mod heap_sort;
 
 fn get_result_text(success: bool) -> ColoredString {
     if success {
@@ -24,7 +25,7 @@ fn get_rand_arr<const SIZE: usize>(rng: &mut ThreadRng, n: i32) -> [i32; SIZE] {
 
 fn main() {
     let mut rng = rand::thread_rng();
-    let test_array: [i32; 10000] = get_rand_arr(&mut rng, 100000);
+    let test_array: [i32; 50000] = get_rand_arr(&mut rng, 100000);
     let mut sorted_test_array = test_array.clone();
     sorted_test_array.sort();
 
@@ -51,4 +52,10 @@ fn main() {
     let shell_sort_result = shell_sort::shell_sort(&mut unsorted);
     println!("shell sort {}", get_result_text(shell_sort_result == sorted_test_array));
     assert_eq!(shell_sort_result, sorted_test_array);
+
+    // heap sort
+    let mut unsorted = test_array.clone();
+    let heap_sort_result = heap_sort::heap_sort(&mut unsorted);
+    println!("heap sort {}", get_result_text(heap_sort_result == sorted_test_array));
+    assert_eq!(heap_sort_result, sorted_test_array);
 }
