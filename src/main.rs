@@ -15,17 +15,17 @@ fn get_result_text(success: bool) -> ColoredString {
     }
 }
 
-fn get_rand_arr<const SIZE: usize>(rng: &mut ThreadRng, n: i32) -> [i32; SIZE] {
+fn get_rand_arr<const SIZE: usize>(rng: &mut ThreadRng) -> [i32; SIZE] {
     let mut arr = [0; SIZE];
     for x in &mut arr {
-        *x = rng.gen_range(-n..n);
+        *x = rng.gen_range(i32::MIN..i32::MAX);
     }
     arr
 }
 
 fn main() {
     let mut rng = rand::thread_rng();
-    let test_array: [i32; 50000] = get_rand_arr(&mut rng, 100000);
+    let test_array: [i32; 50000] = get_rand_arr(&mut rng);
     let mut sorted_test_array = test_array.clone();
     sorted_test_array.sort();
 
