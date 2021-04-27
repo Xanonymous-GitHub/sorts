@@ -1,5 +1,6 @@
 use rand::prelude::*;
 use colored::{Colorize, ColoredString};
+use std::time::Instant;
 
 mod insertion_sort;
 mod selection_sort;
@@ -33,31 +34,41 @@ fn main() {
 
     // insertion sort
     let mut unsorted = test_array.clone();
+    let start = Instant::now();
     let insertion_sort_result = insertion_sort::insertion_sort(&mut unsorted);
-    println!("Insertion sort {}", get_result_text(insertion_sort_result == sorted_test_array).green());
+    let duration = start.elapsed();
+    println!("Insertion sort {} {:?}", get_result_text(insertion_sort_result == sorted_test_array), duration);
     assert_eq!(insertion_sort_result, sorted_test_array);
 
     // selection sort
     let mut unsorted = test_array.clone();
+    let start = Instant::now();
     let selection_sort_result = selection_sort::selection_sort(&mut unsorted);
-    println!("selection sort {}", get_result_text(selection_sort_result == sorted_test_array));
+    let duration = start.elapsed();
+    println!("selection sort {} {:?}", get_result_text(selection_sort_result == sorted_test_array), duration);
     assert_eq!(selection_sort_result, sorted_test_array);
 
     // bubble sort
     let mut unsorted = test_array.clone();
+    let start = Instant::now();
     let bubble_sort_result = bubble_sort::bubble_sort(&mut unsorted);
-    println!("bubble sort {}", get_result_text(bubble_sort_result == sorted_test_array));
+    let duration = start.elapsed();
+    println!("bubble sort    {} {:?}", get_result_text(bubble_sort_result == sorted_test_array), duration);
     assert_eq!(bubble_sort_result, sorted_test_array);
 
     // shell sort
     let mut unsorted = test_array.clone();
+    let start = Instant::now();
     let shell_sort_result = shell_sort::shell_sort(&mut unsorted);
-    println!("shell sort {}", get_result_text(shell_sort_result == sorted_test_array));
+    let duration = start.elapsed();
+    println!("shell sort     {} {:?}", get_result_text(shell_sort_result == sorted_test_array), duration);
     assert_eq!(shell_sort_result, sorted_test_array);
 
     // heap sort
     let mut unsorted = test_array.clone();
+    let start = Instant::now();
     let heap_sort_result = heap_sort::heap_sort(&mut unsorted);
-    println!("heap sort {}", get_result_text(heap_sort_result == sorted_test_array));
+    let duration = start.elapsed();
+    println!("heap sort      {} {:?}", get_result_text(heap_sort_result == sorted_test_array), duration);
     assert_eq!(heap_sort_result, sorted_test_array);
 }
